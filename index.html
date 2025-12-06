@@ -1,1 +1,770 @@
-TEST
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSit – Upcycled Sitting Bags | Nachhaltige Sitzsäcke aus Altkleidung</title>
+    <meta name="description" content="Einzigartige Sitzsäcke aus upgecycelter Kleidung. Jedes Stück ein Unikat mit Charakter. Nachhaltig, handgefertigt, voller Persönlichkeit.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-cream: #fdfbf7;
+            --color-earth: #d35e40;
+            --color-forest: #16a085;
+            --color-moss: #5a6c57;
+            --color-sage: #e8f5e3;
+            --color-dark: #2c3e50;
+            --font-display: 'Fraunces', serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-cream);
+            color: var(--color-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background blobs */
+        .bg-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--color-forest);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--color-earth);
+            bottom: -80px;
+            right: -80px;
+            animation-delay: 5s;
+        }
+
+        .blob-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--color-forest);
+            top: 50%;
+            right: 10%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 32px 0;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-forest);
+            text-decoration: none;
+            display: inline-block;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 100px;
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--color-dark);
+            font-weight: 700;
+        }
+
+        .hero-text .highlight {
+            color: var(--color-earth);
+            font-style: italic;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--color-moss);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* Product Image */
+        .hero-image {
+            position: relative;
+            animation: scaleIn 1s ease-out 0.4s both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 
+                0 20px 60px rgba(22, 160, 133, 0.15),
+                0 8px 24px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.02) rotate(-1deg);
+        }
+
+        /* Decorative elements */
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--color-sage);
+            border-radius: 50%;
+            top: -40px;
+            right: -40px;
+            z-index: -1;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-forest), #13836e);
+            color: white;
+            box-shadow: 0 8px 24px rgba(22, 160, 133, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(22, 160, 133, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-dark);
+            border: 2px solid var(--color-moss);
+            margin-left: 16px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-sage);
+            border-color: var(--color-forest);
+            color: var(--color-forest);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: linear-gradient(180deg, transparent, var(--color-sage) 30%, var(--color-sage) 70%, transparent);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 80px;
+            color: var(--color-dark);
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.7s; }
+        .feature-card:nth-child(2) { animation-delay: 0.8s; }
+        .feature-card:nth-child(3) { animation-delay: 0.9s; }
+        .feature-card:nth-child(4) { animation-delay: 1s; }
+        .feature-card:nth-child(5) { animation-delay: 1.1s; }
+        .feature-card:nth-child(6) { animation-delay: 1.2s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, var(--color-forest), var(--color-earth));
+            transition: height 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover::before {
+            height: 100%;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--color-moss);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Email Signup Section */
+        .signup {
+            padding: 120px 0;
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .signup-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            background: white;
+            padding: 60px 50px;
+            border-radius: 30px;
+            box-shadow: 
+                0 20px 60px rgba(22, 160, 133, 0.12),
+                0 8px 24px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signup-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--color-forest), var(--color-earth), var(--color-forest));
+            background-size: 200% 100%;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .signup h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--color-dark);
+            font-weight: 700;
+        }
+
+        .signup p {
+            font-size: 1.2rem;
+            color: var(--color-moss);
+            margin-bottom: 40px;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .signup-form input {
+            flex: 1;
+            padding: 16px 24px;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+        }
+
+        .signup-form input:focus {
+            outline: none;
+            border-color: var(--color-forest);
+            box-shadow: 0 0 0 4px rgba(22, 160, 133, 0.1);
+        }
+
+        .signup-form button {
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--color-forest), #13836e);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+
+        .signup-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(22, 160, 133, 0.3);
+        }
+
+        .trust-badge {
+            margin-top: 24px;
+            font-size: 0.9rem;
+            color: var(--color-moss);
+            opacity: 0.8;
+        }
+
+        /* Impact Stats */
+        .impact {
+            padding: 80px 0;
+            background: var(--color-dark);
+            color: white;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            text-align: center;
+        }
+
+        .impact-stat {
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        .impact-stat:nth-child(1) { animation-delay: 1.1s; }
+        .impact-stat:nth-child(2) { animation-delay: 1.2s; }
+        .impact-stat:nth-child(3) { animation-delay: 1.3s; }
+
+        .impact-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-forest), #4dd4ac);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .impact-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out 1.4s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        footer p {
+            color: var(--color-moss);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .footer-links a {
+            color: var(--color-moss);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-forest);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .signup-form {
+                flex-direction: column;
+            }
+
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+        }
+
+        /* Success message */
+        .success-message {
+            display: none;
+            padding: 16px;
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 12px;
+            color: #155724;
+            margin-top: 20px;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background blobs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">EcoSit</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Sitzsäcke mit <span class="highlight">Seele</span></h1>
+                    <p>Jedes Stück ein Unikat aus upgecycelter Kleidung. Nachhaltig handgefertigt. Voller Charakter und Persönlichkeit. Gut für dich, gut für den Planeten.</p>
+                    <div>
+                        <a href="#signup" class="btn btn-primary">Frühen Zugang sichern</a>
+                        <a href="#features" class="btn btn-secondary">Mehr erfahren</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2316a085;stop-opacity:0.2'/%3E%3Cstop offset='100%25' style='stop-color:%23d35e40;stop-opacity:0.2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='%23e8f5e3'/%3E%3Cellipse cx='400' cy='350' rx='250' ry='280' fill='%235a6c57' opacity='0.15'/%3E%3Cellipse cx='380' cy='320' rx='230' ry='260' fill='%2316a085' opacity='0.25'/%3E%3Ccircle cx='350' cy='250' r='40' fill='white'/%3E%3Ccircle cx='450' cy='250' r='40' fill='white'/%3E%3Ccircle cx='360' cy='250' r='20' fill='%232c3e50'/%3E%3Ccircle cx='460' cy='250' r='20' fill='%232c3e50'/%3E%3Cellipse cx='400' cy='320' rx='30' ry='40' fill='%23d35e40'/%3E%3Cpath d='M 350 380 Q 400 420 450 380' stroke='%232c3e50' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Ctext x='400' y='500' font-family='Arial' font-size='32' fill='%235a6c57' text-anchor='middle' font-weight='bold'%3EUnikat %231%3C/text%3E%3C/svg%3E" alt="EcoSit Sitzsack Beispiel">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Warum EcoSit?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">♻️</span>
+                    <h3>100% Upcycled</h3>
+                    <p>Aus weggeworfener Kleidung erschaffen. Jeder Sitzsack rettet 5-10 kg Textilien vor der Mülldeponie.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Echte Unikate</h3>
+                    <p>Keine zwei Sitzsäcke sind gleich. Jedes Stück hat seinen eigenen Charakter und seine eigene Geschichte.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">😊</span>
+                    <h3>Mit Persönlichkeit</h3>
+                    <p>Verspielte Gesichter machen jeden Sitzsack zu einem Freund – nicht nur einem Möbelstück.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">✂️</span>
+                    <h3>Handgefertigt</h3>
+                    <p>Mit Liebe von lokalen Handwerkern genäht. Faire Arbeit, höchste Qualität.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💪</span>
+                    <h3>Langlebig & Komfortabel</h3>
+                    <p>Robuste Materialien und hochwertige Verarbeitung für jahrelangen gemütlichen Einsatz.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🌍</span>
+                    <h3>Positive Wirkung</h3>
+                    <p>Dein Kauf unterstützt nachhaltige Praktiken und reduziert textile Abfälle messbar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Signup -->
+    <section class="signup" id="signup">
+        <div class="container">
+            <div class="signup-container">
+                <h2>Sei dabei beim Start!</h2>
+                <p>Erhalte exklusiven Frühzugang, Sonderpreise und Updates zum Launch.</p>
+                <form class="signup-form" id="emailForm">
+                    <input type="email" id="emailInput" placeholder="deine@email.de" required>
+                    <button type="submit">Jetzt anmelden</button>
+                </form>
+                <div class="success-message" id="successMessage">
+                    ✓ Vielen Dank! Wir melden uns bald bei dir.
+                </div>
+                <p class="trust-badge">🔒 Deine Daten sind sicher. Keine Spam-Mails.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="impact">
+        <div class="container">
+            <div class="impact-grid">
+                <div class="impact-stat">
+                    <span class="impact-number">500+</span>
+                    <span class="impact-label">kg Textilien gerettet</span>
+                </div>
+                <div class="impact-stat">
+                    <span class="impact-number">100%</span>
+                    <span class="impact-label">Handgefertigt & Lokal</span>
+                </div>
+                <div class="impact-stat">
+                    <span class="impact-number">0</span>
+                    <span class="impact-label">Identische Stücke</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 EcoSit. Nachhaltig. Einzigartig. Mit Charakter.</p>
+            <div class="footer-links">
+                <a href="#about">Über uns</a>
+                <a href="#contact">Kontakt</a>
+                <a href="#faq">FAQ</a>
+                <a href="#datenschutz">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Email form handling
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const successMessage = document.getElementById('successMessage');
+            
+            // In a real implementation, you would send this to your backend
+            console.log('Email submitted:', email);
+            
+            // Show success message
+            successMessage.classList.add('show');
+            document.getElementById('emailInput').value = '';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect to blobs on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const blobs = document.querySelectorAll('.bg-blob');
+            
+            blobs.forEach((blob, index) => {
+                const speed = 0.3 + (index * 0.1);
+                blob.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
